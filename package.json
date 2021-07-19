@@ -1,0 +1,32 @@
+{
+  "name": "nellet-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "npm run clean && npm run build && aws lambda update-function-code --function-name nellet --zip-file fileb://build.zip --publish",
+    "clean": "rm -rf || rmdir /s build.zip",
+    "build": "zip -r build.zip node_modules index.js app.js routes.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pierregober/nellet-serverless.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pierregober/nellet-serverless/issues"
+  },
+  "homepage": "https://github.com/pierregober/nellet-serverless#readme",
+  "dependencies": {
+    "aws-sdk": "^2.941.0",
+    "aws-serverless-express": "^3.4.0",
+    "cors": "^2.8.5",
+    "expo-auth-session": "^3.3.1",
+    "expo-random": "^11.2.0",
+    "express": "^4.17.1",
+    "react-native-auth0": "^2.9.0",
+    "uuid": "^8.3.2"
+  }
+}
