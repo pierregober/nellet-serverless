@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/pierregober/nellet-serverless#readme",
   "dependencies": {
-    "aws-sdk": "^2.941.0",
+    "aws-sdk": "^2.948.0",
     "aws-serverless-express": "^3.4.0",
     "cors": "^2.8.5",
     "expo-auth-session": "^3.3.1",

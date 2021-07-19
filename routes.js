@@ -18,6 +18,7 @@ const router = express.Router();
 //====================NELLET USERS
 //DONE
 router.get("/nellet/user", (req, res) => {
+  console.log("hit0");
   const params = {
     TableName: NELLET_USERS,
   };
@@ -54,10 +55,12 @@ router.get("/nellet/user/:id", (req, res) => {
 });
 
 router.post("/nellet/user/register", (req, res) => {
+  console.log("hit1");
   const defaultPreferences = { darkMode: false };
-  const name = req.body.name;
   const email = req.body.email;
-  const profilePicture = req.body.profilePicture;
+  const profilePicture =
+    req.body.profilePicture ??
+    "http://www.quickmeme.com/img/4d/4d56e45853983bfeedced94719e78b2869e21252c3d85105f7b56320b8f959ab.jpg";
   const givenName = req.body.givenName;
   const familyName = req.body.familyName;
   const preferences = req.body.preferences ?? defaultPreferences;
@@ -68,7 +71,6 @@ router.post("/nellet/user/register", (req, res) => {
     Item: {
       id,
       email,
-      name,
       profilePicture,
       givenName,
       familyName,
@@ -82,7 +84,7 @@ router.post("/nellet/user/register", (req, res) => {
     }
     res.json({
       id,
-      name,
+      email,
     });
   });
 });
