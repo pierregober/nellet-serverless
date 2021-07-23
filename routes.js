@@ -5,6 +5,16 @@ const uuid = require("uuid");
 const IS_OFFLINE = process.env.NODE_ENV !== "production";
 const NELLET_USERS = process.env.TABLE_NELLET_USERS;
 
+/* START OF PLAID API */
+const keys = require("./keys.js");
+const plaid = require("plaid");
+const client = new plaid.Client({
+  clientID: keys.PLAID_CLIENT_ID,
+  secret: keys.PLAID_SECRET,
+  env: plaid.environments.sandbox,
+});
+/* END OF PLAID API */
+
 const dynamoDb =
   IS_OFFLINE === true
     ? new AWS.DynamoDB.DocumentClient({
